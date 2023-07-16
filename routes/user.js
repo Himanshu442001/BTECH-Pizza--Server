@@ -12,9 +12,9 @@ Router.get("/googlelogin", passport.authenticate("google",{
 
 
 Router.get("/login",
-// passport.authenticate("google" , 
+passport.authenticate("google" , 
 
-// //    { scope:["profile"]},
+   { scope:["profile"]}),
 
 
 (req,res,next)=>{

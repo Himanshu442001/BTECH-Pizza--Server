@@ -19,7 +19,13 @@ export const placeOrder = asyncError(async(req,res,next)=>{
 
 
     } = req.body;
-      
+      // here unquote
+
+  //     "razorpay_payment_id":"saddsrehjj",
+  //  "razorpay_order_id":"nnjhsjhhwhiw",
+  //  "razorpay_signature":"wkjxbjbjjwkx"
+
+
     const user = req.user._id;
 
 

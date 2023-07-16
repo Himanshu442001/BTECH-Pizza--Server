@@ -30,6 +30,11 @@ app.use(session({
         httpOnly:process.env.NODE_ENV === "development" ? false : true,
         sameSite:process.env.NODE_ENV === "development" ? false : "none",
     }
+    // cookie:{
+    //     secure: true,
+    //     httpOnly:true,
+    //     sameSite: "none",
+    // }
 
     // we can also give our name to the cookie
     // name :"connect.pizza"

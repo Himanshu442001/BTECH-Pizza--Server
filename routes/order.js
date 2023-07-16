@@ -11,7 +11,9 @@ Router.post("/createorder"
 ,placeOrder); 
 
 Router.post("/createorderonline",isAuthenticated, placeOrderOnline);
-Router.post("/paymentverification",isAuthenticated, paymentVerification);
+Router.post("/paymentverification"
+,isAuthenticated
+,paymentVerification);
 
 
 
