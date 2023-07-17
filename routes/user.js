@@ -11,22 +11,22 @@ Router.get("/googlelogin", passport.authenticate("google",{
 }));
 
 
-Router.get("/login",
-passport.authenticate("google" , 
+// Router.get("/login",
+// passport.authenticate("google" , 
 
-   { scope:["profile"]}),
+//    { scope:["profile"]}),
 
 
-(req,res,next)=>{
-    res.send("Logged In");
-}
-);
+// (req,res,next)=>{
+//     res.send("Logged In");
+// }
+// );
 
 
 Router.get(
     "/login",
     passport.authenticate("google", {
-      successRedirect: process.env.FRONTEND_URL,
+      successRedirect: "http://localhost:3000",
     })
   );
 
