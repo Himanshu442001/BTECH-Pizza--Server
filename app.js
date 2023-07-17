@@ -57,7 +57,7 @@ app.use(
 // }));
 
 const corsOptions ={
-    origin:process.env.FRONTEND_URL,
+    origin: "http://localhost:3000",
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
