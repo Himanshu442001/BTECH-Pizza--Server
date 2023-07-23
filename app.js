@@ -12,7 +12,6 @@ import cors from "cors";
 
 
 const app = express();
-export default app;
 
 dotenv.config({
     path:"./config/config.env"
@@ -21,23 +20,18 @@ dotenv.config({
 // using Middleware
 
 app.use(session({
-    secret:"process.env.SESSION_SECRET",
+    secret:process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized:false,
+
+    // cookie will display from here only....
 
     cookie:{
         secure:process.env.NODE_ENV === "development" ? false : true,
         httpOnly:process.env.NODE_ENV === "development" ? false : true,
         sameSite:process.env.NODE_ENV === "development" ? false : "none",
     }
-    // cookie:{
-    //     secure: true,
-    //     httpOnly:true,
-    //     sameSite: "none",
-    // }
-
-    // we can also give our name to the cookie
-    // name :"connect.pizza"
+   
 }));
 
 app.use(cookieParser());
@@ -50,16 +44,13 @@ app.use(
 
 
 
-// app.use(cors({
-//     credential:true,
-//     origin:process.env.FRONTEND_URL,
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-// }));
+
 
 const corsOptions ={
-    origin:"http://localhost:3000",
+    origin:process.env.FRONTEND_URL,
     credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+    optionSuccessStatus:200,
+    methods: ["GET", "POST", "PUT", "DELETE"],
 }
 app.use(cors(corsOptions));
 
@@ -83,3 +74,4 @@ app.use("/api/v1",orderRoute);
 // Using the Error Middleware
 
 app.use(errorMiddleware);
+export default app;

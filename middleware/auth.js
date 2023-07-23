@@ -4,7 +4,7 @@ export const isAuthenticated = (req,res,next) => {
 
     const token = req.cookies["connect.sid"];
     // console.log(token);
-   
+    // const  {token} = req.cookies;
 
 
     if(!token){

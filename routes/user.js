@@ -1,8 +1,15 @@
 import express from "express";
 
 import passport from "passport";
-import { getAdminStats, getAdminUsers, logout, myProfile } from "../controllers/user.js";
-import { authorizedAdmin, isAuthenticated } from "../middleware/auth.js";
+import { 
+  getAdminStats, 
+  getAdminUsers,  
+  logout, myProfile 
+} from "../controllers/user.js";
+import {
+   authorizedAdmin,
+    isAuthenticated
+} from "../middleware/auth.js";
 
 const Router = express.Router();
 
@@ -11,24 +18,25 @@ Router.get("/googlelogin", passport.authenticate("google",{
 }));
 
 
-// Router.get("/login",
-// passport.authenticate("google" , 
+Router.get("/login",
+passport.authenticate("google" , 
 
-//    { scope:["profile"]}),
+   { scope:["profile"]}),
 
 
-// (req,res,next)=>{
-//     res.send("Logged In");
-// }
+(req,res,next)=>{
+    res.send("Logged In");
+}
+);
+
+
+// Router.get(
+//     "/login",
+//     passport.authenticate("google", {
+//       scope:["profile"],
+//       successRedirect: process.env.FRONTEND_URL,
+//     })
 // );
-
-
-Router.get(
-    "/login",
-    passport.authenticate("google", {
-      successRedirect: "http://localhost:3000",
-    })
-  );
 
 Router.get("/me",
 isAuthenticated, 

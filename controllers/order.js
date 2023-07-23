@@ -1,4 +1,3 @@
-import { modelNames } from "mongoose";
 import { asyncError } from "../middleware/errorMiddleware.js";
 import { Order } from "../models/Order.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
@@ -19,15 +18,11 @@ export const placeOrder = asyncError(async(req,res,next)=>{
 
 
     } = req.body;
-      // here unquote
-
-  //     "razorpay_payment_id":"saddsrehjj",
-  //  "razorpay_order_id":"nnjhsjhhwhiw",
-  //  "razorpay_signature":"wkjxbjbjjwkx"
+     
 
 
-    const user = req.user._id;
-
+ 
+const user = req.user._id;
 
     const orderOptions = {
         deliveryInfo,
@@ -37,7 +32,7 @@ export const placeOrder = asyncError(async(req,res,next)=>{
         taxPrice,
         deliveryCharges,
         totalAmount,
-        user,
+        user
     }
 
     await Order.create(orderOptions);
@@ -111,6 +106,7 @@ export const paymentVerification = asyncError(async (req, res, next) => {
 
   const isAuthentic = expectedSignature === razorpay_signature;
   
+  // const isAuthentic = true;
  
 
   if(isAuthentic){
